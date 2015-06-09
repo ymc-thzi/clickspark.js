@@ -10,8 +10,7 @@ Add image-files as single particles and configure where and when a particle foun
 
 - or copy th file clickspark.min.js manually to your project    
 [clickspark.min.js][0]
-
-    [0]: https://github.com/ymc-thzi/clickspark.js/blob/master/dist/clickspark.min.js
+ [0]: https://github.com/ymc-thzi/clickspark.js/blob/master/dist/clickspark.min.js
 
 
 # Usage
