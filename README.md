@@ -26,8 +26,6 @@ $('h1').clickSpark();
 
 So on a click on the h1 the default sparkle effect will be fired.
 
----
-
 ## Automatic click binding with particle-configuration (customized particle effect)
 
 use jQuery to add clickspark to every HTML element you want and configure your particle attributes for example like this:
@@ -48,8 +46,6 @@ $('h1').clickSpark({
 | particleSpeed         | 12            | int    |
 | particleSize          | 12            | int    |
 
----
-
 ## independent particle binding (default particle effect)
 
 use jQuery to fire clickspark indipendently whenever you want for example like this:
@@ -65,7 +61,6 @@ $(document).ready(function () {
 The particles will be targeted to the position of the html-element with the class ".sparkingPlace". So you can postion the 
 particle target wherever you want.
 
----
 ## global particle configuration
 
 use these clickspark-methods to set the attributes for your particle effect:
@@ -78,8 +73,6 @@ use these clickspark-methods to set the attributes for your particle effect:
 ```
 
 See default values above for not set attributes 
-
----
 
 # Dependencies
 * jQuery
