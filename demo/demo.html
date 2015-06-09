@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>ClickSpark.js</title>
+
+    <!-- jQuery & Bootstrap -->
+    <script type="text/javascript" src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+
+    <!-- ClickSpark.js -->
+    <script type="text/javascript" src="../dist/clickspark.min.js"></script>
+
+    <style>
+        /*demo css*/
+        body {
+            overflow: hidden;
+        }
+    </style>
+
+    <script>
+        $(document).ready(function () {
+
+
+
+            $('body').clickSpark({
+                particleImagePath: 'particle-1.png',
+                particleCount: 35,
+                particleSpeed: 12,
+                particleSize: 12
+            });
+        });
+    </script>
+</head>
+<body>
+
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">ClickSpark.js</a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li><a href="#">download</a></li>
+                <li><a href="#">howTo</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="container">
+
+    <h1>ClickSpark.js Demo</h1>
+
+    <div class="row">
+        <div class="col-sm-4">
+            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
+            dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet
+            clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet,
+            consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
+            sed diam
+            voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea
+            takimata sanctus est Lorem ipsum dolor sit amet.
+        </div>
+
+        <div class="col-sm-4">
+            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
+            dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet
+            clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet,
+            consetetur sadipscing elitr, sed diam nonumy eirmod te
+            <div class="sparkingPlace">SPARK!</div>
+        </div>
+
+        <div class="col-sm-4">
+            est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet,
+            consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
+            sed diam
+            voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea
+            takimata sanctus est Lorem ipsum dolor sit amet.
+        </div>
+    </div>
+
+</div>
+<footer style="background-color: #f5f5f5; bottom: 0; height: 60px; position: absolute; width: 100%">
+    <div class="container">
+        <p class="text-muted">ClickSpark.js</p>
+    </div>
+</footer>
+<a href="https://github.com/ymc-thzi/clickspark.js"><img alt="Fork me on GitHub"
+                                                         src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png"
+                                                         style="position: absolute; top:0; right: 0; border: 0;"></a>
+</body>
+</html>
