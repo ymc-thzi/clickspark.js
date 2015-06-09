@@ -8,7 +8,7 @@ Add image-files as single particles and configure where and when a particle foun
 - simply install it with <a href="http://bower.io">bower.io</a>. Packagename "clickspark"    
 `$ bower install clickspark`
 
-- or copy th file clickspark.min.js manually to your project    
+- or copy and link the file clickspark.min.js manually to your project    
 [clickspark.min.js][0]
  
  [0]: https://github.com/ymc-thzi/clickspark.js/blob/master/dist/clickspark.min.js
