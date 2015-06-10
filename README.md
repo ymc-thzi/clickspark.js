@@ -5,10 +5,10 @@ Add image-files as single particles and configure where and when a particle foun
 
 # Install
 
-- simply install it with <a href="http://bower.io">bower.io</a>. Packagename "clickspark"    
+- Installation with <a href="http://bower.io">bower.io</a>: Packagename "clickspark"    
 `$ bower install clickspark`
 
-- or copy and link the file clickspark.min.js manually to your project    
+- Manual installation: copy and link the file clickspark.min.js to your project    
 [clickspark.min.js][0]
  
  [0]: https://github.com/ymc-thzi/clickspark.js/blob/master/dist/clickspark.min.js
@@ -18,7 +18,7 @@ Add image-files as single particles and configure where and when a particle foun
 
 ## Automatic click binding (default particle effect)
 
-use jQuery to add clickspark to every HTML element you want like this:
+use jQuery to add clickspark to every HTML element:
 
 ```javascript
 $('h1').clickSpark();
@@ -26,9 +26,9 @@ $('h1').clickSpark();
 
 On a click on the h1 the default sparkle effect will be fired.
 
-## Automatic click binding with particle-configuration (customized particle effect)
+## Automatic configured click binding (customized particle effect)
 
-use jQuery to add clickspark to every HTML element you want and configure your particle attributes for example like this:
+use jQuery to add clickspark to HTML-elements. Cconfigure particle attributes for example like this:
 
 ```javascript
 $('h1').clickSpark({     
@@ -39,29 +39,29 @@ $('h1').clickSpark({
 });
 ```
 
-| Attribute             | defaultvalue  | type   |
+| Attribute             | default       | type   |
 | --------------------- | ------------- | -----  |
-| particleImagePath     | ''            | string |
+| particleImagePath     |               | string |
 | particleCount         | 35            | int    |
 | particleSpeed         | 12            | int    |
 | particleSize          | 12            | int    |
 
-## independent particle binding (default particle effect)
+## Independent particle binding (default particle effect)
 
-use jQuery to fire clickspark indipendently whenever you want for example like this:
+use jQuery to fire clickspark indipendently for example like this:
 
 ```javascript
 $(document).ready(function () {
     $('button').click(function () {
-        clickSpark.fireParticles($('.sparkingPlace'));
+        clickSpark.fireParticles($('.sparklingDiv'));
     });
 });
 ```
 
-The particles will be targeted to the position of the html-element with the class ".sparkingPlace". So you can postion the 
-particle target wherever you want.
+The particles will be targeted to the center position of the HTML-element with the classname ".sparklingDiv".
+So the particle target can be free placed everywhere.
 
-## global particle configuration
+## Global particle configuration
 
 use these clickspark-methods to set the attributes for your particle effect:
 
@@ -69,10 +69,8 @@ use these clickspark-methods to set the attributes for your particle effect:
     clickSpark.setParticleCount(50);
     clickSpark.setParticleSize(12);
     clickSpark.setParticleSpeed(12);
-    clickSpark.setParticleImagePath('../particle-3.png');
+    clickSpark.setParticleImagePath('../particle.png');
 ```
-
-See default values above for not set attributes 
 
 # Dependencies
 * jQuery
