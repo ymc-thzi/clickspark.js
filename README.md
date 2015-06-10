@@ -24,7 +24,7 @@ use jQuery to add clickspark to every HTML element you want like this:
 $('h1').clickSpark();
 ```
 
-So on a click on the h1 the default sparkle effect will be fired.
+On a click on the h1 the default sparkle effect will be fired.
 
 ## Automatic click binding with particle-configuration (customized particle effect)
 
