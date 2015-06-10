@@ -11,9 +11,9 @@ Add image-files as single particles and configure where and when a particle foun
 `$ bower install clickspark`
 
 - Manual installation: copy and link the file clickspark.min.js to your project    
-[clickspark.min.js][0]
+[clickspark.min.js][1]
  
- [0]: https://github.com/ymc-thzi/clickspark.js/blob/master/dist/clickspark.min.js
+ [1]: https://github.com/ymc-thzi/clickspark.js/blob/master/dist/clickspark.min.js
 
 
 # Usage
