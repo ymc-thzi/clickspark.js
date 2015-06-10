@@ -1,8 +1,10 @@
 # ClickSpark.js
 
 ClickSpark.js is a javascript utility that adds beautiful particle effects to your javascript events.    
-Add image-files as single particles and configure where and when a particle fountain should be fired.
+Add image-files as single particles and configure where and when a particle fountain should be fired.    
+[WATCH THE DEMO][0]
 
+ [0]:http://www.ymc.ch/sandbox/clickspark/demo.html
 # Install
 
 - Installation with <a href="http://bower.io">bower.io</a>: packagename "clickspark"    
