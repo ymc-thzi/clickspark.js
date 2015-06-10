@@ -7,30 +7,56 @@
     <!-- jQuery & Bootstrap -->
     <script type="text/javascript" src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
     <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
-    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.js"></script>
 
     <!-- ClickSpark.js -->
     <script type="text/javascript" src="../dist/clickspark.min.js"></script>
 
-    <style>
-        /*demo css*/
-        body {
-            /*overflow: hidden;*/
-        }
-    </style>
-
+    <!-- set example ClickSpark events -->
     <script>
         $(document).ready(function () {
 
-            $('html').clickSpark({
+            $('.button-1').clickSpark();
+
+            $('.button-2').clickSpark({
                 particleImagePath: 'particle-2.png',
                 particleCount: 35,
                 particleSpeed: 10,
                 particleSize: 15
             });
+
+            $(document).ready(function () {
+                $('.button-3').click(function () {
+                    clickSpark.setParticleCount(50);
+                    clickSpark.setParticleSize(12);
+                    clickSpark.setParticleSpeed(12);
+                    clickSpark.setParticleImagePath('particle-4.png');
+                    clickSpark.fireParticles($('.sparklingDiv'));
+                });
+            });
         });
     </script>
+
+    <!-- just styles for this demo-page -->
+    <style>
+        .bg-info {
+            padding: 1px 0 15px 15px;
+        }
+
+        .sparklingDiv {
+            border: 1px solid grey;
+            height: 60px;
+            width: 100px;
+        }
+
+        .sparklingDivContainer {
+            position: absolute;
+            top: 0px;
+            right: 30px;
+        }
+
+    </style>
+
 </head>
 <body>
 
@@ -49,47 +75,112 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
                 <li><a href="https://github.com/ymc-thzi/clickspark.js/archive/master.zip">download</a></li>
-                <li><a target="_blank" href="https://github.com/ymc-thzi/clickspark.js/blob/master/README.md">howTo</a></li>
+                <li><a target="_blank" href="https://github.com/ymc-thzi/clickspark.js/blob/master/README.md">howTo</a>
+                </li>
             </ul>
         </div>
     </div>
 </nav>
 <div class="container">
 
-    <h1>ClickSpark.js Demo</h1>
+    <h1>ClickSpark.js</h1>
+    <h4 class="text-muted">ClickSpark.js is a javascript utility that adds beautiful particle effects to your javascript
+        events.<br>
+        Add image-files as single particles and configure where and when a particle fountain should be fired.</h4>
+    <br/>
+    <br/>
 
     <div class="row">
         <div class="col-sm-4">
-            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
-            dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet
-            clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet,
-            consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
-            sed diam
-            voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea
-            takimata sanctus est Lorem ipsum dolor sit amet.
+            <h4 class="text-primary">Automatic click binding<br/>
+                <small>default particle effect</small>
+            </h4>
+            <div>Use jQuery to add ClickSpark to HTML-elements. On a click on the button-tag the default
+                sparkling effect
+                will be fired.
+            </div>
         </div>
-
         <div class="col-sm-4">
-            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
-            dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet
-            clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet,
-            consetetur sadipscing elitr, sed diam nonumy eirmod te
-            <div class="sparkingPlace">SPARK!</div>
+            <h4 class="text-primary">Automatic configured click binding<br/>
+                <small>customized particle effect</small>
+            </h4>
+            <div>Use jQuery to add ClickSpark to HTML-elements. Configure particle attributes for
+                example
+                like this
+            </div>
         </div>
-
         <div class="col-sm-4">
-            est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet,
-            consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
-            sed diam
-            voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea
-            takimata sanctus est Lorem ipsum dolor sit amet.
+            <h4 class="text-primary">Independent particle binding<br/>
+                <small>customized particle effect</small>
+            </h4>
+            <div>Use jQuery to fire ClickSpark independently for example. The particles will be
+                targeted to
+                the center
+                position of the HTML-element with the className ".sparklingDiv".
+                So the particle target can be placed everywhere via CSS.
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-4">
+            <code>$('.button-1').clickSpark();</code>
+        </div>
+        <div class="col-sm-4">
+            <code>$('.button-2').clickSpark({<br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;particleImagePath: '../particle-1.png',<br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;particleCount: 35,<br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;particleSpeed: 12,<br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;particleSize: 12<br/>
+                });
+            </code>
+        </div>
+        <div class="col-sm-4">
+            <code>
+                $(document).ready(function () {<br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;$('.button-3').click(function () {<br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;clickSpark.fireParticles($('.sparklingDiv'));<br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;});<br/>
+                });
+            </code>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-4">
+            <div class="bg-info">
+                <h4 class="text-muted">DEMO</h4>
+                <button class="btn btn-default button-1">Click Me!</button>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="bg-info">
+                <h4 class="text-muted">DEMO</h4>
+                <button class="btn btn-default button-2">Click Me!</button>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="bg-info">
+                <h4 class="text-muted">DEMO</h4>
+                <button class="btn btn-default button-3">Click Me!</button>
+                <div class="sparklingDivContainer">
+                    target div
+                    <div class="sparklingDiv"></div>
+                </div>
+            </div>
         </div>
     </div>
 
 </div>
+
+</div>
 <footer style="background-color: #f5f5f5; bottom: 0; height: 60px; position: absolute; width: 100%">
     <div class="container">
-        <p class="text-muted">ClickSpark.js</p>
+        <p class="text-muted">
+            ClickSpark.js<br>
+            <small>2015 <a href="http://www.ymc.ch">YMC AG</a> | Sonnenstrasse 4 | CH-8280 Kreuzlingen | Switzerland
+            </small>
+        </p>
     </div>
 </footer>
 <a href="https://github.com/ymc-thzi/clickspark.js"><img alt="Fork me on GitHub"

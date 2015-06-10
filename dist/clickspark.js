@@ -110,6 +110,7 @@ var clickSpark = function (spec) {
             //set canvas attributes
             $(".cs-canvas-container").css({
                 position: 'fixed',
+                zIndex: 99999,
                 width: 500,
                 height: 500
             });
@@ -222,8 +223,8 @@ var clickSpark = function (spec) {
             posY = e.pageY;
         } else {
             //if html-element take position coordinates
-            posX = e.offset().left;
-            posY = e.offset().top;
+            posX = (e.offset().left + e.width() / 2);
+            posY = (e.offset().top + e.height() / 2);
         }
 
         particles = [];
