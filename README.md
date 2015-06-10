@@ -1,6 +1,6 @@
 # ClickSpark.js
 
-clickspark.js is a javascript utility that adds beautiful particle effects to your javascript events.    
+ClickSpark.js is a javascript utility that adds beautiful particle effects to your javascript events.    
 Add image-files as single particles and configure where and when a particle fountain should be fired.
 
 # Install
@@ -18,17 +18,17 @@ Add image-files as single particles and configure where and when a particle foun
 
 ## Automatic click binding (default particle effect)
 
-use jQuery to add clickspark to every HTML element:
+use jQuery to add ClickSpark to HTML-elements:
 
 ```javascript
 $('h1').clickSpark();
 ```
 
-On a click on the h1 the default sparkle effect will be fired.
+On a click on the h1 the default sparkling effect will be fired.
 
 ## Automatic configured click binding (customized particle effect)
 
-use jQuery to add clickspark to HTML-elements. Cconfigure particle attributes for example like this:
+use jQuery to add ClickSpark to HTML-elements. Configure particle attributes for example like this:
 
 ```javascript
 $('h1').clickSpark({     
@@ -48,7 +48,7 @@ $('h1').clickSpark({
 
 ## Independent particle binding (default particle effect)
 
-use jQuery to fire clickspark indipendently for example like this:
+use jQuery to fire ClickSpark independently for example like this:
 
 ```javascript
 $(document).ready(function () {
@@ -58,12 +58,12 @@ $(document).ready(function () {
 });
 ```
 
-The particles will be targeted to the center position of the HTML-element with the classname ".sparklingDiv".
-So the particle target can be free placed everywhere.
+The particles will be targeted to the center position of the HTML-element with the className ".sparklingDiv".
+So the particle target can be placed everywhere via CSS.
 
 ## Global particle configuration
 
-use these clickspark-methods to set the attributes for your particle effect:
+use these ClickSpark methods to set the attributes for your particle effect:
 
 ```javascript
     clickSpark.setParticleCount(50);
