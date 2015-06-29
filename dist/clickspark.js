@@ -50,6 +50,9 @@ var clickSpark = function (spec) {
     var particleSize = csDefaultSpecs.particleSize;
 
     //private
+    var fps = 60;
+    var targetFrameDuration = 1000 / fps;
+    var currentTime = 0;
     var running = false;
     var canvas;
     var context;
@@ -187,8 +190,13 @@ var clickSpark = function (spec) {
             window.mozRequestAnimationFrame ||
             window.oRequestAnimationFrame ||
             window.msRequestAnimationFrame ||
-            function (callback) {
-                window.setTimeout(callback, 1000 / 1);
+            function (callback, lastFrameDuration) {
+                var delay = targetFrameDuration;
+                if(lastFrameDuration > delay) {
+                    delay -= (lastFrameDuration - delay);
+                    if(delay < 0) delay = 0;
+                }
+                window.setTimeout(callback, delay);
             };
     })();
 
@@ -197,7 +205,9 @@ var clickSpark = function (spec) {
      */
     function animate() {
         if (running) {
-            requestAnimationFrame(animate);
+            var lastTime = currentTime;
+            currentTime = Date.now();
+            requestAnimationFrame(animate, (currentTime - lastTime));
             paintParticles();
         }
     }
@@ -213,7 +223,7 @@ var clickSpark = function (spec) {
      * fireParticles
      */
     function fireParticles(e) {
-
+        currentTime = Date.now();
         //Set the anchor of the particle origin
         var posX;
         var posY;
