@@ -1,0 +1,35 @@
+{
+  "name": "clickspark",
+  "title": "ClickSpark.js",
+  "description": "ClickSpark.js is a javascript utility that adds beautiful particle effects to your javascript events.",
+  "keywords": [
+    "particle",
+    "animation",
+    "effect",
+    "canvas",
+    "fountain"
+  ],
+  "version": "1.0.0",
+  "author": {
+    "name": "Thomas Zinnbauer"
+  },
+  "maintainers": [
+    {
+      "name": "Thomas Zinnbauer",
+      "email": "thomas.zinnbauer@ymc.ch",
+      "url": "http://ymc.ch"
+    }
+  ],
+  "licenses": [
+    {
+      "type": "MIT"
+    }
+  ],
+  "bugs": "https://github.com/ymc-thzi/clickspark.js/issues",
+  "homepage": "http://www.ymc.ch/sandbox/clickspark/demo.html",
+  "docs": "https://github.com/ymc-thzi/clickspark.js/blob/master/README.md",
+  "download": "https://github.com/ymc-thzi/clickspark.js/archive/master.zip",
+  "dependencies": {
+    "jquery": ">=1.5"
+  }
+}
