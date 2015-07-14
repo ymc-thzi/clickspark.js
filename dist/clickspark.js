@@ -14,7 +14,8 @@ csDefaultSpecs = {
     particleImagePath: '',
     particleCount: 35,
     particleSpeed: 12,
-    particleSize: 12
+    particleSize: 12,
+    particleRotationSpeed: 0
 }
 
 //setup clickSpark as a jQuery function
@@ -24,7 +25,8 @@ $.fn.clickSpark = function (spec) {
             particleImagePath: csDefaultSpecs.particleImagePath,
             particleCount: csDefaultSpecs.particleCount,
             particleSpeed: csDefaultSpecs.particleSpeed,
-            particleSize: csDefaultSpecs.particleSize
+            particleSize: csDefaultSpecs.particleSize,
+            particleRotationSpeed: csDefaultSpecs.particleRotationSpeed
         };
     }
 
@@ -34,6 +36,8 @@ $.fn.clickSpark = function (spec) {
         clickSpark.setParticleCount(spec.particleCount);
         clickSpark.setParticleSpeed(spec.particleSpeed);
         clickSpark.setParticleSize(spec.particleSize);
+        clickSpark.setParticleRotationSpeed(spec.particleRotationSpeed);
+        ;
 
         //call the on click fireParticle
         clickSpark.stdFuncOCl(e);
@@ -47,6 +51,7 @@ var clickSpark = function (spec) {
     var particleImagePath = csDefaultSpecs.particleImagePath;
     var particleCount = csDefaultSpecs.particleCount;
     var particleSpeed = csDefaultSpecs.particleSpeed;
+    var particleRotationSpeed = csDefaultSpecs.particleRotationSpeed;
     var particleSize = csDefaultSpecs.particleSize;
 
     //private
@@ -57,6 +62,7 @@ var clickSpark = function (spec) {
     var canvas;
     var context;
     var particles = [];
+
     //call the constructor
     constructor();
 
@@ -94,6 +100,12 @@ var clickSpark = function (spec) {
         }
     }
 
+    function setParticleRotationSpeed(val) {
+        if (val != undefined) {
+            particleRotationSpeed = val;
+        }
+    }
+
     /*
      * prepareDOMElements
      */
@@ -101,9 +113,6 @@ var clickSpark = function (spec) {
         $(document).ready(function () {
 
             $('body').prepend('<div class="cs-canvas-container"><canvas id="cs-particle-canvas"></canvas></div>');
-
-            //image should be autogenerate always hidden
-            $(".cs-particle-image").hide();
 
             //hide CanvasContainer
             $(".cs-canvas-container").hide();
@@ -128,10 +137,13 @@ var clickSpark = function (spec) {
         if (canvas) {
             particle.x = canvas.width / 2;
             particle.y = canvas.height / 2;
+            particle.rotation = 0;
         }
         particle.xSpeed = rnd((-1) * particleSpeed, particleSpeed);
         particle.ySpeed = rnd((-1) * particleSpeed, particleSpeed);
+        particle.rotationSpeed = rnd((-1) * particleRotationSpeed, particleRotationSpeed);
         particle.size = particleSize;
+
         return particle;
     }
 
@@ -172,12 +184,21 @@ var clickSpark = function (spec) {
      */
     function paintParticles() {
         context.clearRect(0, 0, window.innerWidth, window.innerHeight);
+
         for (var i = 0; i < particleCount; i++) {
             var particle = particles[i];
+
             particle.size = particle.size * (0.96 + (rnd(1, 10) / 100));
-            context.drawImage(particleImg, particle.x, particle.y, particle.size, particle.size);
             particle.x = particle.x + particle.xSpeed;
             particle.y = particle.y + particle.ySpeed;
+            particle.rotation = particle.rotation + particle.rotationSpeed;
+
+            context.save();
+            context.translate(particle.x, particle.y);
+            context.rotate(particle.rotation * Math.PI / 180);
+            context.drawImage(particleImg, -(particleImg.width / 2), -(particleImg.height / 2), particle.size, particle.size);
+            context.restore();
+
         }
     }
 
@@ -192,9 +213,9 @@ var clickSpark = function (spec) {
             window.msRequestAnimationFrame ||
             function (callback, lastFrameDuration) {
                 var delay = targetFrameDuration;
-                if(lastFrameDuration > delay) {
+                if (lastFrameDuration > delay) {
                     delay -= (lastFrameDuration - delay);
-                    if(delay < 0) delay = 0;
+                    if (delay < 0) delay = 0;
                 }
                 window.setTimeout(callback, delay);
             };
@@ -276,7 +297,9 @@ var clickSpark = function (spec) {
         setParticleSize: function (val) {
             setParticleSize(val);
         },
-
+        setParticleRotationSpeed: function (val) {
+            setParticleRotationSpeed(val);
+        },
         init: function (spec) {
             fireParticles(element);
         },

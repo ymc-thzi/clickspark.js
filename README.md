@@ -39,7 +39,8 @@ $('h1').clickSpark({
     particleImagePath: '../particle.png',     
     particleCount: 35,     
     particleSpeed: 12,     
-    particleSize: 12     
+    particleSize: 12,
+    particleRotationSpeed: 20,    
 });
 ```
 
@@ -49,6 +50,7 @@ $('h1').clickSpark({
 | particleCount         | 35            | int    |
 | particleSpeed         | 12            | int    |
 | particleSize          | 12            | int    |
+| particleRotationSpeed |  0            | int    |
 
 ## Independent particle binding (default particle effect)
 
@@ -74,6 +76,7 @@ use these ClickSpark methods to set the attributes for your particle effect:
     clickSpark.setParticleSize(12);
     clickSpark.setParticleSpeed(12);
     clickSpark.setParticleImagePath('../particle.png');
+    clickSpark.setParticleRotationSpeed(12);
 ```
 
 # Dependencies
