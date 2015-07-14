@@ -76,7 +76,7 @@ use these ClickSpark methods to set the attributes for your particle effect:
     clickSpark.setParticleSize(12);
     clickSpark.setParticleSpeed(12);
     clickSpark.setParticleImagePath('../particle.png');
-    clickSpark.setParticleRotationSpeed(12);
+    clickSpark.setParticleRotationSpeed(20);
 ```
 
 # Dependencies
