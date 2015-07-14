@@ -82,4 +82,7 @@ use these ClickSpark methods to set the attributes for your particle effect:
 # Dependencies
 * jQuery
 
-
+# Browser Support
+| Browser  | <img src="http://www.w3schools.com/images/compatible_chrome.gif">  |
+| -------- | -------------------------------------------------------------------| 
+| Version  |      4.0                                                           |         
