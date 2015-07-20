@@ -1,0 +1,19 @@
+{
+  "name": "clickspark.js",
+  "version": "1.4.0",
+  "description": "ClickSpark.js is a javascript utility that adds beautiful particle effects to your javascript events. Add image-files as single particles and configure where and when a particle fountain should be fired.",
+  "main": "dist/clickspark.min.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ymc-thzi/clickspark.js.git"
+  },
+  "author": "Thomas Zinnbauer",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ymc-thzi/clickspark.js/issues"
+  },
+  "homepage": "http://www.ymc.ch/sandbox/clickspark/demo.html"
+}
