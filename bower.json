@@ -15,7 +15,8 @@
     "HTML5",
     "Canvas",
     "jQuery",
-    "Sparkle"
+    "Sparkle",
+    "JQuery plugin"
   ],
   "license": "",
   "ignore": [
