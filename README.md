@@ -9,6 +9,9 @@ Add image-files as single particles and configure where and when a particle foun
 
 # Install
 
+- Installation with <a href="https://www.npmjs.com/">npm</a>: packagename "clickspark.js"    
+`$ npm install clickspark.js`
+
 - Installation with <a href="http://bower.io">bower.io</a>: packagename "clickspark"    
 `$ bower install clickspark`
 
