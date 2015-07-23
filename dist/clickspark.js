@@ -121,7 +121,7 @@ var clickSpark = function (spec) {
 
             //set canvas attributes
             $(".cs-canvas-container").css({
-                position: 'fixed',
+                position: 'absolute',
                 zIndex: 99999,
                 width: 500,
                 height: 500
