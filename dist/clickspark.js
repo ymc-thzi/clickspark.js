@@ -4,7 +4,7 @@
  *
  * Thomas Zinnbauer @ YMC
  *
- * 2015 YMC AG | Sonnenstrasse 4 | CH-8280 Kreuzlingen | Switzerland
+ * 2015 YMC AG | Sonnenstrasse 4 | f f f CH-8280 Kreuzlingen | Switzerland
  * http://www.ymc.ch
  *
  */
@@ -121,7 +121,7 @@ var clickSpark = function (spec) {
 
             //set canvas attributes
             $(".cs-canvas-container").css({
-                position: 'absolute',
+                position: 'fixed',
                 zIndex: 99999,
                 width: 500,
                 height: 500
