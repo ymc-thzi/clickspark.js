@@ -8,7 +8,7 @@
  * http://www.ymc.ch
  *
  */
-
+var $ = jQuery;
 //global default spec
 csDefaultSpecs = {
     particleImagePath: '',
