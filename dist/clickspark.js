@@ -139,8 +139,8 @@ var clickSpark = function (spec) {
             particle.y = canvas.height / 2;
             particle.rotation = 0;
         }
-        particle.xSpeed = rnd((-1) * particleSpeed, particleSpeed);
-        particle.ySpeed = rnd((-1) * particleSpeed, particleSpeed);
+        particle.speed = rnd(0, particleSpeed);
+        particle.angle = rnd(0, 360) * (Math.PI / 180);//convert to radians;
         particle.rotationSpeed = rnd((-1) * particleRotationSpeed, particleRotationSpeed);
         particle.size = particleSize;
 
@@ -189,8 +189,8 @@ var clickSpark = function (spec) {
             var particle = particles[i];
 
             particle.size = particle.size * (0.96 + (rnd(1, 10) / 100));
-            particle.x = particle.x + particle.xSpeed;
-            particle.y = particle.y + particle.ySpeed;
+            particle.x = particle.x + particle.speed * Math.cos(particle.angle);
+            particle.y = particle.y + particle.speed * Math.sin(particle.angle);
             particle.rotation = particle.rotation + particle.rotationSpeed;
 
             context.save();
