@@ -1,4 +1,5 @@
 Copyright (c) 2015 YMC AG Switzerland
+
 MIT License
 
 Permission is hereby granted, free of charge, to any person obtaining
