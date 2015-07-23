@@ -15,7 +15,8 @@ csDefaultSpecs = {
     particleCount: 35,
     particleSpeed: 12,
     particleSize: 12,
-    particleRotationSpeed: 0
+    particleRotationSpeed: 0,
+    animationType: 'explosion'
 }
 
 //setup clickSpark as a jQuery function
@@ -26,7 +27,8 @@ $.fn.clickSpark = function (spec) {
             particleCount: csDefaultSpecs.particleCount,
             particleSpeed: csDefaultSpecs.particleSpeed,
             particleSize: csDefaultSpecs.particleSize,
-            particleRotationSpeed: csDefaultSpecs.particleRotationSpeed
+            particleRotationSpeed: csDefaultSpecs.particleRotationSpeed,
+            animationType: csDefaultSpecs.animationType
         };
     }
 
@@ -37,7 +39,7 @@ $.fn.clickSpark = function (spec) {
         clickSpark.setParticleSpeed(spec.particleSpeed);
         clickSpark.setParticleSize(spec.particleSize);
         clickSpark.setParticleRotationSpeed(spec.particleRotationSpeed);
-        ;
+        clickSpark.setAnimationType(spec.animationType);
 
         //call the on click fireParticle
         clickSpark.stdFuncOCl(e);
@@ -52,6 +54,7 @@ var clickSpark = function (spec) {
     var particleCount = csDefaultSpecs.particleCount;
     var particleSpeed = csDefaultSpecs.particleSpeed;
     var particleRotationSpeed = csDefaultSpecs.particleRotationSpeed;
+    var animationType = csDefaultSpecs.animationType;
     var particleSize = csDefaultSpecs.particleSize;
 
     //private
@@ -103,6 +106,12 @@ var clickSpark = function (spec) {
     function setParticleRotationSpeed(val) {
         if (val != undefined) {
             particleRotationSpeed = val;
+        }
+    }
+
+    function setAnimationType(val) {
+        if (val != undefined) {
+            animationType = val;
         }
     }
 
@@ -180,26 +189,90 @@ var clickSpark = function (spec) {
     }
 
     /*
-     * paintParticles
+     * createParticles
      */
-    function paintParticles() {
+    function createParticles() {
         context.clearRect(0, 0, window.innerWidth, window.innerHeight);
 
         for (var i = 0; i < particleCount; i++) {
             var particle = particles[i];
 
-            particle.size = particle.size * (0.96 + (rnd(1, 10) / 100));
-            particle.x = particle.x + particle.speed * Math.cos(particle.angle);
-            particle.y = particle.y + particle.speed * Math.sin(particle.angle);
-            particle.rotation = particle.rotation + particle.rotationSpeed;
+            //animationType of the fountain
+            switch (animationType) {
+                case 'explosion':
+                    animationType_explosion(particle);
+                    break;
+                case 'splash':
+                    animationType_splash(particle);
+                    break;
+                case 'falloff':
+                    animationType_falloff(particle);
+                    break;
+                case 'blowright':
+                    animationType_blowright(particle);
+                    break;
+                case 'blowleft':
+                    animationType_blowleft(particle);
+                    break;
+                default:
+                    animationType_explosion(particle);
+            }
 
-            context.save();
-            context.translate(particle.x, particle.y);
-            context.rotate(particle.rotation * Math.PI / 180);
-            context.drawImage(particleImg, -(particleImg.width / 2), -(particleImg.height / 2), particle.size, particle.size);
-            context.restore();
-
+            drawParticles(particle);
         }
+    }
+
+    /*
+     * animationType: explosion
+     */
+    function animationType_explosion(particle) {
+        particle.x = particle.x + particle.speed * Math.cos(particle.angle);
+        particle.y = particle.y + particle.speed * Math.sin(particle.angle);
+    }
+
+    /*
+     * animationType: splash
+     */
+    function animationType_splash(particle) {
+        particle.x = particle.x - Math.tan(particle.angle);
+        particle.y = particle.y + particle.speed * -2;
+    }
+
+    /*
+     * animationType: falloff
+     */
+    function animationType_falloff(particle) {
+        particle.x = particle.x - Math.tan(particle.angle);
+        particle.y = particle.y - particle.speed * -2;
+    }
+
+    /*
+     * animationType: blowright
+     */
+    function animationType_blowright(particle) {
+        particle.x = particle.x - particle.speed * -2;
+        particle.y = particle.y - Math.tan(particle.angle / 8);
+    }
+
+    /*
+     * animationType: blowleft
+     */
+    function animationType_blowleft(particle) {
+        particle.x = particle.x + particle.speed * -2;
+        particle.y = particle.y - Math.tan(particle.angle / 8);
+    }
+
+    /*
+     * drawParticles
+     */
+    function drawParticles(particle) {
+        particle.size = particle.size * (0.96 + (rnd(1, 10) / 100));
+        particle.rotation = particle.rotation + particle.rotationSpeed;
+        context.save();
+        context.translate(particle.x, particle.y);
+        context.rotate(particle.rotation * Math.PI / 180);
+        context.drawImage(particleImg, -(particleImg.width / 2), -(particleImg.height / 2), particle.size, particle.size);
+        context.restore();
     }
 
     /*
@@ -229,7 +302,7 @@ var clickSpark = function (spec) {
             var lastTime = currentTime;
             currentTime = Date.now();
             requestAnimationFrame(animate, (currentTime - lastTime));
-            paintParticles();
+            createParticles();
         }
     }
 
@@ -261,6 +334,19 @@ var clickSpark = function (spec) {
         particles = [];
         particle = null;
         initParticle();
+
+        //avoid flickering scrollbars on canvas display
+        if ($(document).height() > $(window).height()) {
+            $("body").css('overflow-y', 'inherit');
+        } else {
+            $("body").css('overflow-y', 'hidden');
+        }
+        if ($(document).width() > $(window).width()) {
+            $("body").css('overflow-x', 'inherit');
+        } else {
+            $("body").css('overflow-x', 'hidden');
+        }
+
         if ($('.cs-canvas-container').width() > bodyWidth) {
             $(".cs-canvas-container").css('left', posX - ($(".cs-canvas-container").width() / 2));
         } else {
@@ -277,6 +363,7 @@ var clickSpark = function (spec) {
         window.setTimeout(function () {
             $("#cs-particle-canvas").hide();
             $(".cs-canvas-container").hide();
+            $("body").css('overflow', 'inherit');
             running = false;
         }, 800);
     }
@@ -299,6 +386,9 @@ var clickSpark = function (spec) {
         },
         setParticleRotationSpeed: function (val) {
             setParticleRotationSpeed(val);
+        },
+        setAnimationType: function (val) {
+            setAnimationType(val);
         },
         init: function (spec) {
             fireParticles(element);

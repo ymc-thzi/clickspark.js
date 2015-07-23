@@ -9,10 +9,10 @@ Add image-files as single particles and configure where and when a particle foun
 
 # Install
 
-- Installation with <a href="https://www.npmjs.com/package/clickspark.js">npm</a>: packagename "clickspark.js"    
+- Installation with <a target="_blank" href="https://www.npmjs.com/package/clickspark.js">npm</a>: packagename "clickspark.js"    
 `$ npm install clickspark.js`
 
-- Installation with <a href="https://libraries.io/bower/clickspark">bower.io</a>: packagename "clickspark"    
+- Installation with <a target="_blank" href="https://libraries.io/bower/clickspark">bower.io</a>: packagename "clickspark"    
 `$ bower install clickspark`
 
 - Manual installation: copy and link the file clickspark.min.js to your project    
@@ -43,7 +43,8 @@ $('h1').clickSpark({
     particleCount: 35,     
     particleSpeed: 12,     
     particleSize: 12,
-    particleRotationSpeed: 20,    
+    particleRotationSpeed: 20,   
+    animationType: 'explosion' 
 });
 ```
 
@@ -54,6 +55,15 @@ $('h1').clickSpark({
 | particleSpeed         | 12            | int    |
 | particleSize          | 12            | int    |
 | particleRotationSpeed |  0            | int    |
+| animationType         | 'explosion'   | string |
+
+animationTypes:
+
+* explosion
+* splash
+* falloff
+* blowright
+* blowleft
 
 ## Independent particle binding (default particle effect)
 
@@ -80,6 +90,7 @@ use these ClickSpark methods to set the attributes for your particle effect:
     clickSpark.setParticleSpeed(12);
     clickSpark.setParticleImagePath('../particle.png');
     clickSpark.setParticleRotationSpeed(20);
+    clickSpark.setAnimationType('explosion');
 ```
 
 # Dependencies

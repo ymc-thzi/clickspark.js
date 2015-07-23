@@ -24,14 +24,26 @@
                 particleCount: 35,
                 particleSpeed: 10,
                 particleSize: 15,
-                particleRotationSpeed: 20
+                particleRotationSpeed: 20,
+                animationType: 'explosion'
+            });
+
+            $('.button-3').clickSpark({
+                particleImagePath: 'particle-3.png',
+                particleCount: 55,
+                particleSpeed: 10,
+                particleSize: 12,
+                particleRotationSpeed: 0,
+                animationType: 'blowleft'
             });
 
             $(document).ready(function () {
-                $('.button-3').click(function () {
+                $('.button-4').click(function () {
                     clickSpark.setParticleCount(50);
                     clickSpark.setParticleSize(12);
                     clickSpark.setParticleSpeed(12);
+                    clickSpark.setAnimationType('explosion');
+                    clickSpark.setParticleRotationSpeed(0);
                     clickSpark.setParticleImagePath('particle-4.png');
                     clickSpark.fireParticles($('.sparklingDiv'));
                 });
@@ -41,8 +53,17 @@
 
     <!-- just styles for this demo-page -->
     <style>
+
+        body {
+            font-size: 12px;
+        }
+
         .bg-info {
             padding: 1px 0 15px 15px;
+        }
+
+        .text-primary {
+            min-height: 65px;
         }
 
         .sparklingDiv {
@@ -93,80 +114,102 @@
     <br/>
 
     <div class="row">
-        <div class="col-sm-4">
+        <div class="col-sm-3">
             <h4 class="text-primary">Automatic click binding<br/>
                 <small>default particle effect</small>
             </h4>
             <div>Use jQuery to add ClickSpark to HTML-elements. On a click on the button-tag the default
-                sparkling effect
-                will be fired.
+                sparkling effect will be fired.
             </div>
         </div>
-        <div class="col-sm-4">
+        <div class="col-sm-3">
             <h4 class="text-primary">Automatic configured click binding<br/>
                 <small>customized particle effect</small>
             </h4>
             <div>Use jQuery to add ClickSpark to HTML-elements. Configure particle attributes for
-                example
-                like this
+                example with particle rotation like this
             </div>
         </div>
-        <div class="col-sm-4">
+        <div class="col-sm-3">
+            <h4 class="text-primary">Automatic configured click binding<br/>
+                <small>customized particle effect</small>
+            </h4>
+            <div>Use jQuery to add ClickSpark to HTML-elements. Configure particle attributes for
+                example with a custom animation type like this
+            </div>
+        </div>
+        <div class="col-sm-3">
             <h4 class="text-primary">Independent particle binding<br/>
                 <small>customized particle effect</small>
             </h4>
             <div>Use jQuery to fire ClickSpark independently for example. The particles will be
-                targeted to
-                the center
-                position of the HTML-element with the className ".sparklingDiv".
-                So the particle target can be placed everywhere via CSS.
+                targeted to the center position of the HTML-element with the className ".sparklingDiv".
+                So the particle target can be placed everywhere via CSS.<br><br/>
             </div>
         </div>
     </div>
 
     <div class="row">
-        <div class="col-sm-4">
+        <div class="col-sm-3 text-nowrap">
             <code>$('.button-1').clickSpark();</code>
         </div>
-        <div class="col-sm-4">
+        <div class="col-sm-3 text-nowrap">
             <code>$('.button-2').clickSpark({<br/>
-                &nbsp;&nbsp;&nbsp;&nbsp;particleImagePath: '../particle-1.png',<br/>
-                &nbsp;&nbsp;&nbsp;&nbsp;particleCount: 35,<br/>
-                &nbsp;&nbsp;&nbsp;&nbsp;particleSpeed: 12,<br/>
-                &nbsp;&nbsp;&nbsp;&nbsp;particleSize: 12<br/>
-                &nbsp;&nbsp;&nbsp;&nbsp;particleRotationSpeed: 20<br/>
+                &nbsp;&nbsp;particleImagePath: '../particle-2.png',<br/>
+                &nbsp;&nbsp;particleCount: 35,<br/>
+                &nbsp;&nbsp;particleSpeed: 10,<br/>
+                &nbsp;&nbsp;particleSize: 15,<br/>
+                &nbsp;&nbsp;particleRotationSpeed: 20<br/>
 
                 });
             </code>
         </div>
-        <div class="col-sm-4">
+        <div class="col-sm-3 text-nowrap">
+            <code>$('.button-3').clickSpark({<br/>
+                &nbsp;&nbsp;particleImagePath: '../particle-3.png',<br/>
+                &nbsp;&nbsp;particleCount: 55,<br/>
+                &nbsp;&nbsp;particleSpeed: 10,<br/>
+                &nbsp;&nbsp;particleSize: 12,<br/>
+                &nbsp;&nbsp;particleRotationSpeed: 0,<br/>
+                &nbsp;&nbsp;animationType:'blowleft'<br/>
+
+                });
+            </code>
+        </div>
+        <div class="col-sm-3 text-nowrap">
             <code>
                 $(document).ready(function () {<br/>
-                &nbsp;&nbsp;&nbsp;&nbsp;$('.button-3').click(function () {<br/>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;clickSpark.fireParticles($('.sparklingDiv'));<br/>
-                &nbsp;&nbsp;&nbsp;&nbsp;});<br/>
+                &nbsp;&nbsp;$('.button-4').click(function () {<br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;clickSpark.fireParticles($('.sparklingDiv'));<br/>
+                &nbsp;&nbsp;});<br/>
                 });
             </code>
         </div>
     </div>
 
     <div class="row">
-        <div class="col-sm-4">
+        <div class="col-sm-3">
             <div class="bg-info">
                 <h4 class="text-muted">DEMO</h4>
                 <button class="btn btn-default button-1">Click Me!</button>
             </div>
         </div>
-        <div class="col-sm-4">
+        <div class="col-sm-3">
             <div class="bg-info">
                 <h4 class="text-muted">DEMO</h4>
                 <button class="btn btn-default button-2">Click Me!</button>
             </div>
         </div>
-        <div class="col-sm-4">
+        <div class="col-sm-3">
             <div class="bg-info">
                 <h4 class="text-muted">DEMO</h4>
                 <button class="btn btn-default button-3">Click Me!</button>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="bg-info">
+                <h4 class="text-muted">DEMO</h4>
+                <button class="btn btn-default button-4">Click Me!</button>
                 <div class="sparklingDivContainer">
                     target div
                     <div class="sparklingDiv"></div>
