@@ -65,6 +65,8 @@ var clickSpark = function (spec) {
     var canvas;
     var context;
     var particles = [];
+    var posX;
+    var posY;
 
     //call the constructor
     constructor();
@@ -132,8 +134,10 @@ var clickSpark = function (spec) {
             $(".cs-canvas-container").css({
                 position: 'absolute',
                 zIndex: 99999,
-                width: 500,
-                height: 500
+                width: '100%',
+                height: '100%',
+                top: window.scrollY,
+                left: window.scrollX
             });
         });
     }
@@ -144,8 +148,8 @@ var clickSpark = function (spec) {
     function createParticle() {
         var particle = {};
         if (canvas) {
-            particle.x = canvas.width / 2;
-            particle.y = canvas.height / 2;
+            particle.x = posX;
+            particle.y = posY;
             particle.rotation = 0;
         }
         particle.speed = rnd(0, particleSpeed);
@@ -173,8 +177,8 @@ var clickSpark = function (spec) {
         if (canvas && typeof(canvas['getContext']) == 'function') {
             context = canvas.getContext("2d");
             bodyWidth = document.body.clientWidth;
-            context.canvas.width = ($('.cs-canvas-container').width() > bodyWidth) ? bodyWidth : $('.cs-canvas-container').width() * 2;
-            context.canvas.height = $('.cs-canvas-container').height();
+            context.canvas.width = document.body.clientWidth;
+            context.canvas.height = document.body.clientHeight;
         }
         generateParticles();
     }
@@ -319,16 +323,16 @@ var clickSpark = function (spec) {
     function fireParticles(e) {
         currentTime = Date.now();
         //Set the anchor of the particle origin
-        var posX;
-        var posY;
+
         //if click take event coordinates
         if (e.type == 'click') {
-            posX = e.pageX;
-            posY = e.pageY;
+            posX = e.pageX - window.scrollX;
+            posY = e.pageY - window.scrollY;
+
         } else {
             //if html-element take position coordinates
-            posX = (e.offset().left + e.width() / 2);
-            posY = (e.offset().top + e.height() / 2);
+            posX = (e.offset().left + e.width() / 2) - window.scrollX;
+            posY = (e.offset().top + e.height() / 2) - window.scrollY;
         }
 
         particles = [];
@@ -347,12 +351,12 @@ var clickSpark = function (spec) {
             $("body").css('overflow-x', 'hidden');
         }
 
-        if ($('.cs-canvas-container').width() > bodyWidth) {
-            $(".cs-canvas-container").css('left', posX - ($(".cs-canvas-container").width() / 2));
-        } else {
-            $(".cs-canvas-container").css('left', posX - ($(".cs-canvas-container").width()));
-        }
-        $(".cs-canvas-container").css('top', posY - ($(".cs-canvas-container").height() / 2));
+        $(".cs-canvas-container").css('top', window.scrollY);
+        $(".cs-canvas-container").css('left', window.scrollX);
+
+        $("#cs-particle-canvas").css('top', 0);
+        $("#cs-particle-canvas").css('left', 0);
+
         $(".cs-canvas-container").show();
         $("#cs-particle-canvas").show();
         window.setTimeout(function () {
