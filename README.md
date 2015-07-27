@@ -5,7 +5,7 @@ Add image-files as single particles and configure where and when a particle foun
 <a target="_blank" href="http://www.ymc.ch/sandbox/clickspark/demo.html">TEST THE DEMO</a>
 
 <a target="_blank" href="http://www.ymc.ch/sandbox/clickspark/demo.html">
-<img src="http://www.ymc.ch/sandbox/clickspark/sparkling-demo.gif"></a>
+<img src="http://www.ymc.ch/sandbox/clickspark/sparkling-demo-1.11.0.gif"></a>
 
 # Install
 
