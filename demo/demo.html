@@ -32,8 +32,8 @@
                 particleImagePath: 'particle-3.png',
                 particleCount: 55,
                 particleSpeed: 10,
-                particleSize: 12,
-                particleRotationSpeed: 0,
+                particleSize: 24,
+                particleRotationSpeed: 5,
                 animationType: 'blowleft'
             });
 
@@ -41,8 +41,8 @@
                 $('.button-4').click(function () {
                     clickSpark.setParticleCount(50);
                     clickSpark.setParticleSize(12);
-                    clickSpark.setParticleSpeed(12);
-                    clickSpark.setAnimationType('explosion');
+                    clickSpark.setParticleSpeed(8);
+                    clickSpark.setAnimationType('splash');
                     clickSpark.setParticleRotationSpeed(0);
                     clickSpark.setParticleImagePath('particle-4.png');
                     clickSpark.fireParticles($('.sparklingDiv'));
@@ -53,13 +53,20 @@
 
     <!-- just styles for this demo-page -->
     <style>
-
+        html, body {
+            height: 100%;
+        }
         body {
             font-size: 12px;
+            /*background-color: #f2f2f2;*/
+            background: linear-gradient(to top, #ffffff 0%,#f2f2f2 100%);
         }
 
         .bg-info {
             padding: 1px 0 15px 15px;
+            box-shadow: 0 2px 9px rgba(0, 0, 0, 0.3);
+            padding: 5px 0 20px 20px;
+            margin-top: 15px;
         }
 
         .text-primary {
@@ -74,10 +81,17 @@
 
         .sparklingDivContainer {
             position: absolute;
-            top: 0px;
+            top: 22px;
             right: 30px;
         }
-
+        .navbar-default {
+            background: linear-gradient(to top, #000000 0%,#303030 100%);
+            border-color: transparent;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+        }
+        .navbar {
+            border-radius: 0;
+        }
     </style>
 
 </head>
@@ -93,7 +107,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">ClickSpark.js</a>
+            <a class="navbar-brand" href="">ClickSpark.js</a>
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
