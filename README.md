@@ -93,7 +93,7 @@ use these ClickSpark methods to set the attributes for your particle effect:
     clickSpark.setParticleImagePath('../particle.png');
     clickSpark.setParticleRotationSpeed(20);
     clickSpark.setAnimationType('explosion');
-    clickSpark.setCallback: (function() { /*do something, follow href for example*/ ); 
+    clickSpark.setCallback: (function() { /*do something, follow href for example*/ }); 
 ```
 
 # Dependencies
