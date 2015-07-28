@@ -146,8 +146,8 @@ var clickSpark = function (spec) {
                 zIndex: 99999,
                 width: '100%',
                 height: '100%',
-                top: window.scrollY,
-                left: window.scrollX
+                top: window.pageYOffset,
+                left: window.pageXOffset
             });
         });
     }
@@ -341,13 +341,13 @@ var clickSpark = function (spec) {
 
         //if click take event coordinates
         if (e.type == 'click') {
-            posX = e.pageX - window.scrollX;
-            posY = e.pageY - window.scrollY;
+            posX = e.pageX - window.pageXOffset;
+            posY = e.pageY - window.pageYOffset;
 
         } else {
             //if html-element take position coordinates
-            posX = (e.offset().left + e.width() / 2) - window.scrollX;
-            posY = (e.offset().top + e.height() / 2) - window.scrollY;
+            posX = (e.offset().left + e.width() / 2) - window.pageXOffset;
+            posY = (e.offset().top + e.height() / 2) - window.pageYOffset;
         }
 
         particles = [];
@@ -366,8 +366,8 @@ var clickSpark = function (spec) {
             $("body").css('overflow-x', 'hidden');
         }
 
-        $(".cs-canvas-container").css('top', window.scrollY);
-        $(".cs-canvas-container").css('left', window.scrollX);
+        $(".cs-canvas-container").css('top', window.pageYOffset);
+        $(".cs-canvas-container").css('left', window.pageXOffset);
 
         $("#cs-particle-canvas").css('top', 0);
         $("#cs-particle-canvas").css('left', 0);
