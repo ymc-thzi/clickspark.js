@@ -44,7 +44,8 @@ $('h1').clickSpark({
     particleSpeed: 12,     
     particleSize: 12,
     particleRotationSpeed: 20,   
-    animationType: 'explosion' 
+    animationType: 'explosion',
+    callback: function() {//do something, follow href for example } 
 });
 ```
 
@@ -56,6 +57,7 @@ $('h1').clickSpark({
 | particleSize          | 12            | int    |
 | particleRotationSpeed |  0            | int    |
 | animationType         | 'explosion'   | string |
+| callback              |               | func() |
 
 animationTypes:
 
@@ -91,6 +93,7 @@ use these ClickSpark methods to set the attributes for your particle effect:
     clickSpark.setParticleImagePath('../particle.png');
     clickSpark.setParticleRotationSpeed(20);
     clickSpark.setAnimationType('explosion');
+    clickSpark.setCallback: (function() {//do something, follow href for example }); 
 ```
 
 # Dependencies

@@ -1,5 +1,5 @@
 /*
- * Clickspark JavaScript utility v1.0.0
+ * ClickSpark.js
  * https://github.com/ymc-thzi/clickspark.js
  *
  * Thomas Zinnbauer @ YMC
@@ -16,7 +16,8 @@ csDefaultSpecs = {
     particleSpeed: 12,
     particleSize: 12,
     particleRotationSpeed: 0,
-    animationType: 'explosion'
+    animationType: 'explosion',
+    callback: null
 }
 
 //setup clickSpark as a jQuery function
@@ -28,7 +29,8 @@ $.fn.clickSpark = function (spec) {
             particleSpeed: csDefaultSpecs.particleSpeed,
             particleSize: csDefaultSpecs.particleSize,
             particleRotationSpeed: csDefaultSpecs.particleRotationSpeed,
-            animationType: csDefaultSpecs.animationType
+            animationType: csDefaultSpecs.animationType,
+            callback: csDefaultSpecs.callback
         };
     }
 
@@ -40,6 +42,7 @@ $.fn.clickSpark = function (spec) {
         clickSpark.setParticleSize(spec.particleSize);
         clickSpark.setParticleRotationSpeed(spec.particleRotationSpeed);
         clickSpark.setAnimationType(spec.animationType);
+        clickSpark.setCallback(spec.callback);
 
         //call the on click fireParticle
         clickSpark.stdFuncOCl(e);
@@ -56,6 +59,7 @@ var clickSpark = function (spec) {
     var particleRotationSpeed = csDefaultSpecs.particleRotationSpeed;
     var animationType = csDefaultSpecs.animationType;
     var particleSize = csDefaultSpecs.particleSize;
+    var callback = csDefaultSpecs.callback;
 
     //private
     var fps = 60;
@@ -114,6 +118,12 @@ var clickSpark = function (spec) {
     function setAnimationType(val) {
         if (val != undefined) {
             animationType = val;
+        }
+    }
+
+    function setCallback(val) {
+        if (val != undefined) {
+            callback = val;
         }
     }
 
@@ -275,6 +285,11 @@ var clickSpark = function (spec) {
         context.save();
         context.translate(particle.x, particle.y);
         context.rotate(particle.rotation * Math.PI / 180);
+
+        //fixed base particle size
+        particleImg.width = 20;
+        particleImg.height = 20;
+
         context.drawImage(particleImg, -(particleImg.width / 2), -(particleImg.height / 2), particle.size, particle.size);
         context.restore();
     }
@@ -369,6 +384,12 @@ var clickSpark = function (spec) {
             $(".cs-canvas-container").hide();
             $("body").css('overflow', 'inherit');
             running = false;
+
+            if(typeof callback == 'function')
+            {
+                callback.call(this);
+            }
+
         }, 800);
     }
 
@@ -393,6 +414,9 @@ var clickSpark = function (spec) {
         },
         setAnimationType: function (val) {
             setAnimationType(val);
+        },
+        setCallback: function (val) {
+            setCallback(val);
         },
         init: function (spec) {
             fireParticles(element);

@@ -12,10 +12,11 @@
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.js"></script>
 
     <!-- ClickSpark.js -->
-    <script type="text/javascript" src="../dist/clickspark.min.js"></script>
+    <script type="text/javascript" src="../dist/clickspark.js"></script>
 
     <!-- set example ClickSpark events -->
     <script>
+
         $(document).ready(function () {
 
             $('.button-1').clickSpark();
@@ -26,8 +27,10 @@
                 particleSpeed: 10,
                 particleSize: 15,
                 particleRotationSpeed: 20,
-                animationType: 'explosion'
+                animationType: 'explosion',
+                callback: ''
             });
+
 
             $('.button-3').clickSpark({
                 particleImagePath: 'particle-3.png',
@@ -35,25 +38,43 @@
                 particleSpeed: 10,
                 particleSize: 24,
                 particleRotationSpeed: 5,
-                animationType: 'blowleft'
+                animationType: 'blowleft',
+                callback: function () {
+
+                    $('.callbackDiv').animate({
+                        opacity: 0,
+                    }, 0, "linear", function () {
+                        $('.callbackDiv').animate({
+                            opacity: 1,
+                        }, 200, "linear");
+                    });
+                }
             });
 
-            $(document).ready(function () {
-                $('.button-4').click(function () {
-                    clickSpark.setParticleCount(50);
-                    clickSpark.setParticleSize(12);
-                    clickSpark.setParticleSpeed(8);
-                    clickSpark.setAnimationType('splash');
-                    clickSpark.setParticleRotationSpeed(20);
-                    clickSpark.setParticleImagePath('particle-4.png');
-                    clickSpark.fireParticles($('.sparklingDiv'));
-                });
+
+            $('.button-4').click(function () {
+                clickSpark.setParticleCount(50);
+                clickSpark.setParticleSize(12);
+                clickSpark.setParticleSpeed(8);
+                clickSpark.setAnimationType('splash');
+                clickSpark.setParticleRotationSpeed(20);
+                clickSpark.setParticleImagePath('particle-4.png');
+                clickSpark.setCallback('');
+                clickSpark.fireParticles($('.sparklingDiv'));
             });
+
+
         });
+
+
     </script>
 
     <!-- just styles for this demo-page -->
     <style>
+        html {
+            background-color: #FFF;
+        }
+
         html, body {
             height: 100%;
         }
@@ -62,6 +83,10 @@
             font-size: 12px;
             /*background-color: #f2f2f2;*/
             background: linear-gradient(to top, #ffffff 0%, #f2f2f2 100%);
+        }
+
+        .container {
+            padding-bottom: 100px;
         }
 
         .bg-info {
@@ -97,6 +122,35 @@
             border-radius: 0;
         }
 
+        .callbackDiv {
+            border: 3px solid #449d44;
+            font-size: 10px;
+            line-height: 10px;
+            padding: 3px;
+            position: absolute;
+            right: 20px;
+            top: 50px;
+            width: 50%;
+            opacity: 0;
+        }
+
+        @media (max-width: 1199px) {
+            .callbackDiv, .sparklingDivContainer {
+                position: relative;
+                right: inherit;
+                top: 10px;
+                width: 90%;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .callbackDiv, .sparklingDivContainer {
+                position: absolute;
+                right: 20px;
+                top: 10px;
+                width: 50%;
+            }
+        }
     </style>
 
 </head>
@@ -151,10 +205,10 @@
         </div>
         <div class="col-sm-3">
             <h4 class="text-primary">Automatic configured click binding<br/>
-                <small>customized particle effect</small>
+                <small>customized particle effect with callback function</small>
             </h4>
             <div>Use jQuery to add ClickSpark to HTML-elements. Configure particle attributes for
-                example with a custom animation type like this
+                example with a custom animation type like this and make a callback after animation is ready
             </div>
         </div>
         <div class="col-sm-3">
@@ -191,6 +245,9 @@
                 &nbsp;&nbsp;particleSize: 12,<br/>
                 &nbsp;&nbsp;particleRotationSpeed: 0,<br/>
                 &nbsp;&nbsp;animationType:'blowleft'<br/>
+                &nbsp;&nbsp;callback: function () {<br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;$('.callbackDiv').show();<br/>
+                &nbsp;&nbsp;}<br/>
 
                 });
             </code>
@@ -223,6 +280,9 @@
             <div class="bg-info">
                 <h4 class="text-muted">DEMO</h4>
                 <button class="btn btn-default button-3">Click Me!</button>
+                <div class="bg-success callbackDiv">
+                    callback func called:<br/> animation ready, follow href for example
+                </div>
             </div>
         </div>
         <div class="col-sm-3">
@@ -232,15 +292,17 @@
                 <div class="sparklingDivContainer">
                     target div
                     <div class="sparklingDiv"></div>
+
                 </div>
             </div>
         </div>
+
     </div>
 
-</div>
+    <a href="https://github.com/ymc-thzi/clickspark.js"><img alt="Fork me on GitHub"
+                                                             src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png"
+                                                             style="position: absolute; top:0; right: 0; border: 0;"></a>
 
-<a href="https://github.com/ymc-thzi/clickspark.js"><img alt="Fork me on GitHub"
-                                                         src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png"
-                                                         style="position: absolute; top:0; right: 0; border: 0;"></a>
+</div>
 </body>
 </html>
