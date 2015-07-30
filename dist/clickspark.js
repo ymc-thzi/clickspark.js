@@ -14,6 +14,7 @@ csDefaultSpecs = {
     particleImagePath: '',
     particleCount: 35,
     particleSpeed: 12,
+    particleDuration: 400,
     particleSize: 12,
     particleRotationSpeed: 0,
     animationType: 'explosion',
@@ -27,6 +28,7 @@ $.fn.clickSpark = function (spec) {
             particleImagePath: csDefaultSpecs.particleImagePath,
             particleCount: csDefaultSpecs.particleCount,
             particleSpeed: csDefaultSpecs.particleSpeed,
+            particleDuration: csDefaultSpecs.particleDuration,
             particleSize: csDefaultSpecs.particleSize,
             particleRotationSpeed: csDefaultSpecs.particleRotationSpeed,
             animationType: csDefaultSpecs.animationType,
@@ -39,6 +41,7 @@ $.fn.clickSpark = function (spec) {
         clickSpark.setParticleImagePath(spec.particleImagePath);
         clickSpark.setParticleCount(spec.particleCount);
         clickSpark.setParticleSpeed(spec.particleSpeed);
+        clickSpark.setParticleDuration(spec.particleDuration);
         clickSpark.setParticleSize(spec.particleSize);
         clickSpark.setParticleRotationSpeed(spec.particleRotationSpeed);
         clickSpark.setAnimationType(spec.animationType);
@@ -56,6 +59,7 @@ var clickSpark = function (spec) {
     var particleImagePath = csDefaultSpecs.particleImagePath;
     var particleCount = csDefaultSpecs.particleCount;
     var particleSpeed = csDefaultSpecs.particleSpeed;
+    var particleDuration = csDefaultSpecs.particleDuration;
     var particleRotationSpeed = csDefaultSpecs.particleRotationSpeed;
     var animationType = csDefaultSpecs.animationType;
     var particleSize = csDefaultSpecs.particleSize;
@@ -100,6 +104,12 @@ var clickSpark = function (spec) {
     function setParticleSpeed(val) {
         if (val != undefined) {
             particleSpeed = val;
+        }
+    }
+
+    function setParticleDuration(val) {
+        if (val != undefined) {
+            particleDuration = val;
         }
     }
 
@@ -375,22 +385,22 @@ var clickSpark = function (spec) {
         $(".cs-canvas-container").show();
         $("#cs-particle-canvas").show();
         window.setTimeout(function () {
-            $("#cs-particle-canvas").fadeOut();
-        }, 400);
+            $("#cs-particle-canvas").fadeOut(fadeCompleted);
+        }, particleDuration);
         running = true;
         animate();
-        window.setTimeout(function () {
+
+        function fadeCompleted () {
             $("#cs-particle-canvas").hide();
             $(".cs-canvas-container").hide();
             $("body").css('overflow', 'inherit');
             running = false;
-
             if(typeof callback == 'function')
             {
                 callback.call(this);
             }
+        }
 
-        }, 800);
     }
 
     /*
@@ -405,6 +415,9 @@ var clickSpark = function (spec) {
         },
         setParticleSpeed: function (val) {
             setParticleSpeed(val);
+        },
+        setParticleDuration: function (val) {
+            setParticleDuration(val);
         },
         setParticleSize: function (val) {
             setParticleSize(val);
