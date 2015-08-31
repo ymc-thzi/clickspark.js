@@ -8,7 +8,7 @@
  * http://www.ymc.ch
  *
  */
-(function(){
+var clickSpark = (function(){
 
     var $ = jQuery;
     //global default spec
@@ -446,5 +446,7 @@
             }
         };
     }();
+
+    return clickSpark;
 
 }());
