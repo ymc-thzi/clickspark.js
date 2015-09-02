@@ -239,7 +239,7 @@ var clickSpark = (function(){
          */
         function createParticles() {
             context.clearRect(0, 0, window.innerWidth, window.innerHeight);
-            var selectedAnimation = animations[animationType || DEFAULT_ANIMATION];
+            var selectedAnimation = animations[animationType] || animations[DEFAULT_ANIMATION];
 
             particles.forEach( function(particle) {
                 selectedAnimation(particle);
