@@ -1,0 +1,8 @@
+title: Clickspark.js
+description: clickspark.js is a javascript utility that adds beautiful particle effects to your javascript events
+google_analytics: 
+show_downloads: true
+theme: jekyll-theme-slate
+
+gems:
+  - jekyll-mentions
