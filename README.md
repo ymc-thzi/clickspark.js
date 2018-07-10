@@ -4,7 +4,7 @@ ClickSpark.js is a javascript utility that adds beautiful particle effects to yo
 Add image-files as single particles and configure where and when a particle fountain should be fired.    
 <a target="_blank" href="http://www.ymc.ch/sandbox/clickspark/demo.html">TEST THE DEMO</a>
 
-<a target="_blank" href="http://www.ymc.ch/sandbox/clickspark/demo.html">
+<a target="_blank" href="http://ymc-thzi.github.io/clickspark.js/">
 <img src="https://raw.githubusercontent.com/ymc-thzi/clickspark.js/gh-pages/sparkling-demo-1.11.0.gif"></a>
 
 # Install
@@ -107,4 +107,4 @@ use these ClickSpark methods to set the attributes for your particle effect:
 | -------- | -------------------------------------------------------------------| --------------------------------------------------------------|--------------------------------------------------------------------|-------------------------------------------------------------------|------------------------------------------------------------------| 
 | Version  | 4.0                                                                | 9.0                                                           | 2.0                                                                | 3.1                                                               | 9.0                                                              |
 
-http://www.ymc.ch/de/blog/introducing-clickspark-js-open-source-particle-effects/
+
